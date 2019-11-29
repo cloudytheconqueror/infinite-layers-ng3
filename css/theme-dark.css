@@ -1,0 +1,15 @@
+body {
+  background-color: black;
+}
+
+html * {
+  color: white;
+}
+
+button {
+  background-color: black;
+}
+
+#showDimsText {
+  color: black;
+}

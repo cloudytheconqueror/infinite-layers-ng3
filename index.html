@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Infinite Layers</title>
+</head>
+<body>
+  <div>
+    <span><button onclick="saveGame()">Save</button> <button onclick="loadGame(prompt('Enter your save:'))">Load</button> <button onclick="exportGame()">Export</button> <button onclick="resetGameWithConfirmation()">HARD RESET THE GAME</button></span>
+  </div>
+  <div id="app">
+    <div>
+      <span><button onclick="nextTheme()">Current theme: {{ player.currentTheme }}</button> <button onclick="toggleSaveType()">Current save type: {{ player.saveType }}</button></span>
+    </div>
+    <div v-if="player.generators.length > 3">
+      <button @click="toggleMetaDisplay()">Display buttons display: {{ player.metaDisplay ? 'enabled' : 'disabled' }}</button>
+      <div v-if="player.metaDisplay">
+        <span v-for="(generator, idx) in player.generators">
+          <button @click="toggleDisplay(idx)">{{ generator.displayName }} display: {{ generator.display ? 'enabled' : 'disabled' }}</button>
+        </span>
+      </div>
+      <div>Display <input v-model.number="player.lowTiers" id="showDimsText"></input> lowest dimensions.</div>
+      <div>Display <input v-model.number="player.highTiers" id="showDimsText"></input> highest dimensions.</div>
+      <div>Display <input v-model.number="player.lowLayers" id="showLayersText"></input> lowest prestige layers.</div>
+      <div>Display <input v-model.number="player.highLayers" id="showLayersText"></input> highest prestige layers.</div>
+    </div>
+    <div class="column" v-for="(generator, idx) in player.generators">
+      <div v-if="generator.display && (idx < player.lowLayers || idx >= player.generators.length - player.highLayers)">
+        <div class="currency">
+          <span>You have {{ format(generator.prestigeAmount) }} {{ generator.prestigeName }}<span v-if="idx > 0"> and {{ format(generator.currencyAmount) }} {{ generator.currencyName }}</span>. <button @click="maxAll(idx)" v-if="idx < player.generators.length - 1">Max all</button> <button @click="toggleAutoMaxAll(idx)" v-if="idx < player.generators.length - 2">Auto max all: {{ generator.autoMaxAll ? 'on' : 'off' }}</button> <button @click="togglePrestigeGain(idx)" v-if="idx < player.generators.length - 3">Prestige gain: {{ generator.prestigeGain ? 'on' : 'off' }}</button></span>
+        </div>
+        <button class="prestige" @click="prestige(idx)">Get {{ format(getPrestigeGain(generator.prestigeAmount)) }} {{ generator.nextPrestigeName }}.</button>
+        <div class="generators-container">
+          <div v-for="(gen, jdx) in generator.list">
+            <div class="generator" v-if="jdx < player.lowTiers || jdx >= generator.list.length - player.highTiers">
+              <h4>{{ gen.generatorName }} </h4>
+              <span class="generator-amount">{{ format(gen.amount) }}</span>
+              <span class="generator-multiplier">{{ format(getMult(idx, jdx)) }}x</span>
+              <span class="generator-cost">Cost: {{ format(gen.cost) }}</span>
+              <span><button @click="buyGenerator(idx, jdx)">Buy 1</button><button @click="buyMaxGenerator(idx, jdx)">Buy max</button></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column" v-if="player.singularity.unlocked">
+      <div class="currency">
+        <span>You have {{ format(player.singularity.currencyAmount) }} singularity power, making all dimension multipliers x^{{ formatLong(getSingularityPowerEffect()) }}.</span>
+      </div>
+    </div>
+    <div class="column" v-if="player.incrementali.unlocked">
+      <div class="currency">
+        <span>You have {{ format(player.incrementali.currencyAmount) }} incrementali, multiplying all dimensions by {{ format(getIncrementaliEffect()) }}.</span>
+      </div>
+      <div class="currency">
+        <span>You have {{ format(player.incrementali.galaxies) }} incrementali galaxies (next at {{ format(player.incrementali.nextGalaxy) }}), raising the singularity power effect cap to x^{{ formatLong(getSingularityPowerCap()) }}.</span>
+      </div>
+      <button class="upgrade" @click="buyIncrementaliUpgrade(0)">Increase incrementali production {{ format(format(getIncrementaliUpgradeEffect(3))) }}x.<br/>Currently {{ format(getIncrementaliUpgradeEffect(0)) }} per second.<br/>Cost: {{ format(player.incrementali.costs[0]) }}</span></button>
+      <button class="upgrade" @click="buyIncrementaliUpgrade(1)">Incrementali multiplier ^{{ format(format(getIncrementaliUpgradeEffect(4))) }}.<br/>Currently x^{{ format(getIncrementaliUpgradeEffect(1)) }}.<br/>Cost: {{ format(player.incrementali.costs[1]) }}</span></button>
+      <button class="upgrade" @click="buyIncrementaliUpgrade(2)">Multiply singularity power production based on incrementali.<br/>Currently {{ format(getIncrementaliUpgradeEffect(2)) }}x.<br/>Cost: {{ format(player.incrementali.costs[2]) }}</span></button>
+      <button class="upgrade" @click="buyIncrementaliUpgrade(3)">Boost the incrementali production upgrade based on incrementali.<br/>Currently {{ format(getIncrementaliUpgradeEffect(3)) }}x per purchase.<br/>Cost: {{ format(player.incrementali.costs[3]) }}</span></button>
+      <button class="upgrade" @click="buyIncrementaliUpgrade(4)">Boost the incrementali multiplier upgrade based on incrementali galaxies.<br/>Currently {{ format(getIncrementaliUpgradeEffect(4)) }}x per purchase.<br/>Cost: {{ format(player.incrementali.costs[4]) }}</span></button>
+      <button class="upgrade" @click="maxAllIncrementaliUpgrades()">Max buy all incrementali upgrades</button>
+    </div>
+  </div>
+  <a href="https://discord.gg/YArVwQ4">Discord</a>
+  <div style="display: none;"><textarea id="exportOutput"></textarea></div>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/breakinfinity.js"></script>
+<script src="js/data.js"></script>
+<script src="js/format.js"></script>
+<script src="js/buying.js"></script>
+<script src="js/incrementali.js"></script>
+<script src="js/prestige.js"></script>
+<script src="js/liquification.js"></script>
+<script src="js/saving.js"></script>
+<script src="js/style.js"></script>
+<script src="js/player.js"></script>
+<script src="js/loop.js"></script>
+<script src="js/index.js"></script>
+</html>
