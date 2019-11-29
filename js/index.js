@@ -1,7 +1,8 @@
 var app = new Vue({
   el: "#app",
   data: {
-    player: player
+    player: player,
+    numPrestiges: numPrestiges
   },
   methods: {
     prestige(i) {
