@@ -84,7 +84,7 @@ function getInitialGenerator (i, j) {
 let prestiges = ['Infinity', 'Eternity', 'Quantum', 'Ghostify',
                  'Ethereal', 'Hadronize', 'Stellar', 'Universal',
                  'Fractalize', 'Abstraction', 'Cosmological', 'Beyond',
-                 'Meta', '???', 'Virtualize', 'Digitize',
+                 'Meta', '?', 'Virtualize', 'Digitize',
                  'Infinitize', 'Timeless', 'Continuum', 'Omniscient',
                  'Spiritual', 'Enlighten'];
 let prestigeCurrencies = ['infinity points', 'eternity points', 'quarks', 'ghost particles',
