@@ -81,13 +81,30 @@ function getInitialGenerator (i, j) {
   }
 }
 
-let prestiges = ['Infinity', 'Eternity', 'Quantum', 'Reality'];
+let prestiges = ['Infinity', 'Eternity', 'Quantum', 'Ghostify',
+                 'Ethereal', 'Hadronize', 'Stellar', 'Universal',
+                 'Fractalize', 'Abstraction', 'Cosmological', 'Beyond',
+                 'Meta', '???', 'Virtualize', 'Digitize',
+                 'Infinitize', 'Timeless', 'Continuum', 'Omniscient',
+                 'Spiritual', 'Enlighten'];
+let prestigeCurrencies = ['infinity points', 'eternity points', 'quarks', 'ghost particles',
+                          'ethereal preons', 'antiquarks', 'stellar fragments', 'protoverses',
+                          'bubble archverses', 'fractalverses', 'omniverse foams', 'unreality foams',
+                          'monocosmic objects', '???', 'virtual antimatter', 'reality bits',
+                          'metamatter', 'eternal universes', 'quantum foams', 'omnipotent memories',
+                          'immortal spirits', 'reality shards'];
+let numPrestiges = prestiges.length;
 
 function getPrestigeCurrencyName (i) {
   if (i === 0) {
-    return 'money';
+    return 'antimatter';
   } else {
-    return getPrestigeName(i) + ' points';
+    let r = prestigeCurrencies[(i + numPrestiges - 1) % numPrestiges];
+    let metaLevel = Math.floor((i - 1) / numPrestiges);
+    if (metaLevel > 0) {
+      r = 'Mk' + (metaLevel + 1) + ' ' + r;
+    }
+    return r;
   }
 }
 
@@ -96,18 +113,14 @@ function getProducedCurrencyName (i) {
 }
 
 function getPrestigeName (i, title=false) {
-  let main = prestiges[(i + 3) % 4];
-  let metaLevel = Math.floor((i - 1) / 4);
-  let r;
-  if (metaLevel === 0) {
-    r = main;
-  } else if (metaLevel === 1) {
-    r = 'Meta-' + main;
-  } else {
-    r = 'Meta' + numberToSuperscript(metaLevel) + '-' + main;
-  }
+  let main = prestiges[(i + numPrestiges - 1) % numPrestiges];
+  let metaLevel = Math.floor((i - 1) / numPrestiges);
+  let r = main;
   if (!title) {
     r = r.toLowerCase();
+  }
+  if (metaLevel > 0) {
+    r = 'Mk' + (metaLevel + 1) + ' ' + r;
   }
   return r;
 }
