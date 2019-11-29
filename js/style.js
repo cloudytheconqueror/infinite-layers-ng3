@@ -1,4 +1,4 @@
-let themes = ['default', 'dark', 'cook1ee', 'cook1ee dark'];
+let themes = ['default', 'dark', 'cook1ee', 'cook1ee dark', 'ng3 buttons', 'ng3 buttons dark'];
 
 function nextTheme() {
     setTheme(getNextTheme());
@@ -20,7 +20,7 @@ function setTheme(name) {
 
     link.type = 'text/css';
     link.rel = 'stylesheet';
-    link.href = "css/theme-" + name.replace(' ', '-') + ".css";
+    link.href = "css/theme-" + name.split(' ').join('-') + ".css";
 
     head.appendChild(link);
 }

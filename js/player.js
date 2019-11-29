@@ -10,7 +10,7 @@ let player = {
   },
   incrementali: initialIncrementali(),
   generators: [],
-  currentTheme: 'default',
+  currentTheme: 'ng3 buttons',
   metaDisplay: true,
   saveType: 'full',
   version: 6
