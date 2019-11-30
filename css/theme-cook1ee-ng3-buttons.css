@@ -1,0 +1,428 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(180deg, #eee8ff, #a8a8ff);
+}
+
+button {
+  border: 1.25px solid #0016d5;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #aba8ff, rgb(106, 155, 255));
+
+  transition: 0.5s;
+}
+
+button:hover{
+  filter: hue-rotate(40deg);
+  border-radius: 12px;
+}
+
+button:active{
+  transform: scale(1.1);
+}
+
+input {
+  background-color: #d8deff;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding-left: 3px;
+
+  transition: 0.5s;
+}
+
+input:hover{
+  background-color: #aab7ff;
+}
+
+#app {
+  margin: auto;
+}
+
+.column {
+  float: left;
+  width: 200px;
+}
+
+.currency {
+  width: 200px;
+  border: 1px solid black;
+  background: linear-gradient(180deg, #e3ffe2, rgb(102, 255, 173));
+  height: 150px;
+  padding: 10px;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+}
+
+.prestige {
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(180deg, #2588e9, #005cb8);
+
+  transition: 0.5s;
+}
+
+.prestige:hover{
+    filter: none;
+}
+
+.generators-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.generator {
+  border-radius: 8px;
+  background: linear-gradient(180deg, #d885ff, rgb(125, 66, 255));
+  width: 200px;
+  height: 150px;
+  text-align: center;
+}
+
+.generator-cost {
+  display: block;
+  color: #00caa8;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+}
+
+.generator-amount {
+  color: #0d00a4;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #00000063;
+}
+
+.generator-multiplier {
+  color: #930000;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #00000063;
+}
+
+.prestige0 {
+  color: #FFFFFF;
+	background: #1F1F1F;
+	border: 2px solid #B67F33;
+}
+.prestige0:hover {
+	color: #000000;
+	background: #B67F33;
+}
+
+.prestige1 {
+	color: #b341e0;
+	background: black;
+	border: 2px solid #b341e0;
+}
+.prestige1:hover {
+	color: #511568;
+	background: white;
+}
+
+.prestige2 {
+	color: #32c832;
+	background: #0a640a;
+	border: 2px solid #32c832;
+}
+.prestige2:hover {
+	background: #32c832;
+	color: #0a640a;
+}
+
+.prestige3 {
+	background: linear-gradient(#0c001e, #3a003f);
+	border: 2px solid transparent;
+	animation: ghost 4s linear infinite
+}
+.prestige3:hover {
+	border-color: rgba(255,255,255,0.5);
+	box-shadow: inset 0px 0px 12px 0px #ffffff;
+}
+@keyframes ghost {
+	0%{
+		color: #e900ff;
+		text-shadow: 0px 0px 3px #e900ff, 0px 0px 6px #ffffff;
+	}
+	50% {
+		color: #6a00ff;
+		text-shadow: 0px 0px 6px #6a00ff, 0px 0px 6px #ffffff;
+	}
+	100%{
+		color: #e900ff;
+		text-shadow: 0px 0px 3px #e900ff, 0px 0px 6px #ffffff;
+	}
+}
+
+.prestige4 {
+	background: repeating-linear-gradient(#00bfff, transparent 50%, #00bfff 100%), repeating-linear-gradient(90deg, #00dfff, #007fff 50%, #00dfff 100%);
+	background-size: 200% 200%;
+	box-shadow: inset 0px 0px 12px 0px #00bfff;
+	border: 2px solid #00bfff;
+	color: white;
+	text-shadow: 0px 0px 3px white, 0px 0px 3px black;
+	animation: ethereal 5s linear infinite;
+}
+.prestige4:hover {
+	border: 2px solid #007fff;
+	box-shadow: inset 0px 0px 12px 0px #007fff;
+	color: #7f9fff;
+	text-shadow: 0px 0px 3px black
+}
+@keyframes ethereal {
+	0%{
+		background-position: 0% 0%
+	}
+	50%{
+		background-position: 100% 100%
+	}
+	100%{
+		background-position: 200% 200%
+	}
+}
+
+.prestige5 {
+	color: #ffffff;
+	animation: hadronize 1.5s linear infinite;
+	border: 2px solid #1f1f1f;
+	background: radial-gradient(transparent, #000000), repeating-linear-gradient(#990000, #009900, #000099, #990000);
+	background-size: 100% 200%;
+}
+.prestige5:hover {
+	color: #000000;
+	animation: hadronize 1.5s linear infinite;
+	border: 2px solid #bfbfbf;
+	text-shadow: 0px 0px 3px #ffffff, 0px 0px 3px #ffffff;
+	background: radial-gradient(transparent, #000000), repeating-linear-gradient(#990000, #009900, #000099, #990000);
+	background-size: 100% 200%;
+}
+@keyframes hadronize{
+	0%{
+	    background-position: 50% 50%, 0% 0%;
+	}
+	100%{
+	    background-position: 50% 50%, 0% 200%;
+	}
+}
+
+.prestige6 {
+	color: #7f6f1f;
+	text-shadow: 0 0 1px #000000, 0 0 2px #7f7f7f, 0 0 3px #ffffff;
+	background: radial-gradient(closest-side,#ff5400 0,#ff9021 33%,#ffdf3f 100%);
+	border: 2px solid #ffdf3f;
+}
+.prestige6:hover {
+	color: #ffffff;
+	text-shadow: 0 0 1px #ffdf3f, 0 0 2px #7f6f1f, 0 0 3px #000000;
+	background: radial-gradient(closest-side,#ff5400 0,#ff9021 33%,#ffdf3f 100%);
+	border: 2px solid #ffdf3f;
+}
+
+.prestige7 {
+	color: #7fbfff;
+	text-shadow: 0 0 3px #7fbfff, 0 0 3px #7fbfff, 0 0 4px #000000;
+	background: radial-gradient(closest-side,transparent 0,transparent 50%,#000000 100%), linear-gradient(#000000, #3f5f7f);
+	border: 2px solid #000000;
+}
+.prestige7:hover {
+	text-shadow: 0 0 9px #7fbfff, 0 0 9px #7fbfff, 0 0 12px #000000;
+}
+
+.prestige8 {
+	color: #000000;
+	text-shadow: 0px 0px 3px #ffffff, 0px 0px 3px #ffffff;
+	animation: fract 3s linear infinite;
+	border: 2px solid #1f1f1f;
+	background: radial-gradient(transparent, #000000), repeating-linear-gradient(90deg,#000764,#206BCB 16%,#EDFFFF 42%,#FFAA00 64.25%,#000200 85.75%,#000764);
+	background-size: 200% 100%;
+}
+.prestige8:hover {
+	color: #ffffff;
+	border: 2px solid #bfbfbf;
+	text-shadow: 0px 0px 3px #000000, 0px 0px 3px #000000;
+}
+@keyframes fract{
+	0%{
+	    background-position: 0% 0%, 0% 0%;
+	}
+	100%{
+	    background-position: 0% 0%, 200% 200%;
+	}
+}
+
+.prestige9 {
+	color: #000000;
+	text-shadow: 0px 0px 3px #7f7f7f, 0px 0px 3px #ffffff;
+	background: linear-gradient(#000000,#1f1f1f 50%,#000000 100%);
+	border: 2px solid #000000;
+}
+.prestige9:hover {
+	color: #ffffff;
+	text-shadow: 0px 0px 3px #ffffff, 0px 0px 3px #ffffff
+}
+
+.prestige10 {
+	color: #ffffff;
+	text-shadow: 0px 0px 3px #ffffff, 0px 0px 3px #ffffff;
+	background: #000000;
+	border: 2px solid #000000;
+}
+.prestige10:hover {
+	color: #ffffff;
+	text-shadow: 0px 0px 9px #ffffff, 0px 0px 9px #ffffff
+}
+
+.prestige11 {
+	color: #bfbfbf;
+	text-shadow: 0px 0px 3px #bfbfbf, 0px 0px 3px #bfbfbf;
+	background: #ffffff;
+	border: 2px solid #efefef;
+}
+.prestige11:hover {
+	color: #ffffff;
+	text-shadow: 0px 0px 3px #7f7f7f, 0px 0px 3px #7f7f7f;
+}
+
+.prestige12 {
+	color: #ffffff;
+	text-shadow: 0px 0px 3px #000000;
+	background: radial-gradient(transparent, #ffffff),  linear-gradient(#cccc00, #00cccc 33%, #cc00cc 66%, #cccc00 100%);
+	border: 2px solid #ffffff;
+	animation: meta 3s linear infinite;
+	background-size: 100% 300%;
+}
+.prestige12:hover {
+	text-shadow: 0px 0px 6px #000000;
+}
+@keyframes meta {
+	0%{
+	    background-position: 0% 0%, 0% 0%;
+	}
+	100%{
+	    background-position: 0% 0%, 300% 300%;
+	}
+}
+
+.prestige13 {
+	background: #fcfcfc;
+	color: #fcfcfc;
+	border: 2px solid #ffffff;
+}
+.prestige13:hover {
+	background: #000000;
+	color: #7f7f7f;
+	text-shadow: 0px 0px 3px #3f3f3f;
+	border-color: #000000;
+}
+
+.prestige14 {
+	color: #000000;
+	text-shadow: 0px 0px 3px #ffffff;
+	background: linear-gradient(#000000, transparent 50%, #000000 100%), radial-gradient(circle, #ffffff, #3f9fff 50%, #000000 100%);
+	border: 2px solid transparent;
+}
+.prestige14:hover {
+	color: #ffffff;
+	text-shadow: 0px 0px 3px #000000;
+}
+
+.prestige15 {
+	color: #00ff00;
+	text-shadow: 0px 0px 6px #000000, 0px 0px 6px #000000, 0px 0px 6px #000000, 0px 0px 6px #000000, 0px 0px 6px #000000, 0px 0px 6px #000000;
+	background: url("../images/digitize.png");
+	border: 2px solid #000000;
+	animation: digitize 3s linear infinite;
+}
+.prestige15:hover {
+	color: #000000;
+	text-shadow: 0px 0px 6px #00ff00, 0px 0px 6px #00ff00, 0px 0px 6px #00ff00, 0px 0px 6px #00ff00, 0px 0px 6px #00ff00, 0px 0px 6px #00ff00;
+}
+@keyframes digitize {
+	0%{
+	    background-position: 0 0;
+	}
+	100%{
+	    background-position: -20px -40px;
+	}
+}
+
+.prestige16 {
+	color: #ffffff;
+	text-shadow: 0px 0px 3px #ffffff;
+	background: radial-gradient(circle, #ffffff, #000000 75%, #e59900 100%);
+	border: 2px solid #000000;
+}
+.prestige16:hover {
+	color: #000000;
+	text-shadow: 0px 0px 6px #e59900, 0px 0px 6px #e59900, 0px 0px 6px #e59900, 0px 0px 6px #e59900, 0px 0px 6px #e59900, 0px 0px 6px #e59900;
+}
+
+.prestige17 {
+	border: 2px solid #000000;
+	box-shadow: inset 0px 0px 12px 0px #ffffff;
+	color: #001966;
+	text-shadow: 0px 0px 3px #ffffff, 0px 0px 6px #ffffff;
+	background: radial-gradient(circle, #7f7f7f, #000000 25%, transparent 50%), linear-gradient(#ffffff, transparent 33%, transparent 67%, #ffffff 100%), linear-gradient(90deg, #e59900 0%, #b341e0 100%);
+}
+.prestige17:hover {
+	border-color: #0033cc;
+	box-shadow: inset 0px 0px 12px 0px #0033cc;
+	text-shadow: 0px 0px 3px #0033cc, 0px 0px 6px #0033cc;
+}
+
+.prestige18 {
+	border: 2px solid #3f00ff;
+	box-shadow: inset 0px 0px 12px 0px #7f00ff;
+	color: #3f00ff;
+	text-shadow: 0px 0px 6px #1f007f, 0px 0px 3px #1f007f;
+	background: linear-gradient(#00007f, #0000ff 50%, #00007f 100%);
+}
+.prestige18:hover {
+	box-shadow: inset 0px 0px 12px 0px #7f00ff;
+	text-shadow: 0px 0px 6px #9f7fff, 0px 0px 3px #9f7fff;
+}
+
+.prestige19 {
+	color: #bfbf00;
+	text-shadow: 0px 0px 6px #bfbf00, 0px 0px 3px #bfbf00;
+	background: radial-gradient(circle, transparent, #000000 50%, #000000 100%), linear-gradient(#3f3f00, transparent 50%, #3f3f00 100%), linear-gradient(#3f3f00, #ffff00 50%, #3f3f00 100%);
+  border: 2px solid #000000;
+}
+.prestige19:hover {
+	text-shadow: 0px 0px 6px #ffff00, 0px 0px 3px #ffffff;
+}
+
+.prestige20 {
+	color: #ff3f00;
+	text-shadow: 0px 0px 6px #ff3f00, 0px 0px 3px #000000;
+	background: radial-gradient(transparent, #ff7f00), linear-gradient(#ff3f00, transparent 50%, #ff3f00 100%), linear-gradient(90deg, #ff0000, #ff7f00 50%, #ff0000 100%);
+	border: 2px solid #ff3f00;
+	animation: spiritual 3s linear infinite;
+	background-size: 100% 300%;
+}
+.prestige20:hover {
+	color: #ff7f00;
+	text-shadow: 0px 0px 6px #ffbf7f, 0px 0px 3px #ffffff;
+}
+@keyframes spiritual {
+	0%{
+	    background-position: 0 0;
+	}
+	100%{
+	    background-position: 300% 300%;
+	}
+}
+
+.prestige21 {
+	border: 2px solid #bfbfbf;
+	box-shadow: inset 0px 0px 12px 0px #bfbfbf;
+	color: #ff7f7f;
+	text-shadow: 0px 0px 6px #ff7f7f, 0px 0px 3px #ff7f7f;
+	background: #ffffff;
+}
+.prestige21:hover {
+	color: #ff0000;
+	text-shadow: 0px 0px 6px #ff0000, 0px 0px 3px #ff00000;
+}

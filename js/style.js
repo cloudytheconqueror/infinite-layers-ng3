@@ -1,4 +1,5 @@
-let themes = ['default', 'dark', 'cook1ee', 'cook1ee dark', 'ng3 buttons', 'ng3 buttons dark'];
+let themes = ['default', 'dark', 'cook1ee', 'cook1ee dark',
+              'ng3 buttons', 'ng3 buttons dark', 'cook1ee ng3 buttons', 'cook1ee ng3 buttons dark'];
 
 function nextTheme() {
     setTheme(getNextTheme());
