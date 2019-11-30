@@ -180,4 +180,18 @@ function saveFix () {
     player.lowLayers = Infinity;
     player.highLayers = Infinity;
   }
+
+  // Fixing names in case importing from original or the layer names are changed
+  for (let i = 0; i < player.generators.length; i++) {
+    let r = player.generators[i];
+    r.prestigeName = getPrestigeCurrencyName(i);
+    r.nextPrestigeName = getPrestigeCurrencyName(i + 1);
+    r.displayName = getDisplayName(i);
+    if (i !== 0) {
+      r.currencyName = getProducedCurrencyName(i);
+    }
+    for (let j = 0; j < r.list.length; j++) {
+      r.list[j].generatorName = ((i === 0) ? '' : (getPrestigeName(i, title=true))) + ' Dimension ' + (j + 1);
+    }
+  }
 }
