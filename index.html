@@ -29,7 +29,7 @@
     <div class="column" v-for="(generator, idx) in player.generators">
       <div v-if="generator.display && (idx < player.lowLayers || idx >= player.generators.length - player.highLayers)">
         <div class="currency">
-          <span>You have {{ format(generator.prestigeAmount) }} {{ generator.prestigeName }}<span v-if="idx > 0"> and {{ format(generator.currencyAmount) }} {{ generator.currencyName }}</span>. <button @click="maxAll(idx)" v-if="idx < player.generators.length - 1">Max all</button> <button @click="toggleAutoMaxAll(idx)" v-if="idx < player.generators.length - 2">Auto max all: {{ generator.autoMaxAll ? 'on' : 'off' }}</button> <button @click="togglePrestigeGain(idx)" v-if="idx < player.generators.length - 3">Prestige gain: {{ generator.prestigeGain ? 'on' : 'off' }}</button></span>
+          <span>You have {{ format(generator.prestigeAmount) }} {{ generator.prestigeName }}<span v-if="idx > 0"> and {{ format(generator.currencyAmount) }} {{ generator.currencyName }}</span>. <button @click="maxAll(idx)">Max all</button> <button @click="toggleAutoMaxAll(idx)" v-if="idx < player.generators.length - 2">Auto max all: {{ generator.autoMaxAll ? 'on' : 'off' }}</button> <button @click="togglePrestigeGain(idx)" v-if="idx < player.generators.length - 3">Prestige gain: {{ generator.prestigeGain ? 'on' : 'off' }}</button></span>
         </div>
         <button :class="'prestige prestige' + (idx % numPrestiges)" @click="prestige(idx)">Get {{ format(getPrestigeGain(generator.prestigeAmount)) }} {{ generator.nextPrestigeName }}.</button>
         <div class="generators-container">

@@ -45,9 +45,7 @@ function buyMaxGenerator(i, j) {
 }
 
 function maxAll(i) {
-  if (i < player.generators.length - 1) {
-    for (let j = 0; j < player.generators[i].list.length; j++) {
-      buyMaxGenerator(i, j);
-    }
+  for (let j = 0; j < player.generators[i].list.length; j++) {
+    buyMaxGenerator(i, j);
   }
 }
