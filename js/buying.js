@@ -49,3 +49,9 @@ function maxAll(i) {
     buyMaxGenerator(i, j);
   }
 }
+
+function maxAllLayers() {
+  for (let i = 0; i < player.generators.length; i++) {
+    maxAll(i);
+  }
+}

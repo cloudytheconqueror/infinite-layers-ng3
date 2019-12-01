@@ -2,6 +2,8 @@
 
 A purely cosmetic mod of dan-simon's Infinite Layers, where the names of the prestige layers are changed to the current and planned prestige layer names of Aarex's NG+3 mod of Antimatter Dimensions.
 
+Well, not purely cosmetic anymore, because some QoL features are added too.
+
 ## Links
 
 * [Original game](https://dan-simon.github.io/misc/b2/) by dan-simon

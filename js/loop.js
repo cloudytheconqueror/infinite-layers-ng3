@@ -41,3 +41,10 @@ function gameLoop () {
 loadGame();
 setInterval(saveGame, 10000);
 setInterval(gameLoop, 50);
+
+// When you press M...
+window.addEventListener('keydown', function(event) {
+  if (event.keyCode === 77) {
+    maxAllLayers();
+  }
+});

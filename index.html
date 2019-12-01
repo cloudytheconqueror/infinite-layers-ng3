@@ -26,6 +26,9 @@
       <div>Display <input v-model.number="player.lowLayers" id="showLayersText"></input> lowest prestige layers.</div>
       <div>Display <input v-model.number="player.highLayers" id="showLayersText"></input> highest prestige layers.</div>
     </div>
+    <div>
+      <span><button onclick="maxAllLayers()">Max all layers (M)</button></span>
+    </div>
     <div class="column" v-for="(generator, idx) in player.generators">
       <div v-if="generator.display && (idx < player.lowLayers || idx >= player.generators.length - player.highLayers)">
         <div class="currency">
