@@ -105,6 +105,7 @@ function resetGame() {
     currentTheme: 'ng3 buttons',
     metaDisplay: true,
     saveType: 'full',
+    legacyLayers: false,
     version: 6
   }
   initializeTier();
@@ -182,16 +183,7 @@ function saveFix () {
   }
 
   // Fixing names in case importing from original or the layer names are changed
-  for (let i = 0; i < player.generators.length; i++) {
-    let r = player.generators[i];
-    r.prestigeName = getPrestigeCurrencyName(i);
-    r.nextPrestigeName = getPrestigeCurrencyName(i + 1);
-    r.displayName = getDisplayName(i);
-    if (i !== 0) {
-      r.currencyName = getProducedCurrencyName(i);
-    }
-    for (let j = 0; j < r.list.length; j++) {
-      r.list[j].generatorName = ((i === 0) ? '' : (getPrestigeName(i, title=true))) + ' Dimension ' + (j + 1);
-    }
-  }
+  updateNames();
+
+  if (player.legacyLayers === undefined) player.legacyLayers = false;
 }

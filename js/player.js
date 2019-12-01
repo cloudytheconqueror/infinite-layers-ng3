@@ -13,6 +13,7 @@ let player = {
   currentTheme: 'ng3 buttons',
   metaDisplay: true,
   saveType: 'full',
+  legacyLayers: false,
   version: 6
 }
 

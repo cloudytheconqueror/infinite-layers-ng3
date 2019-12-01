@@ -12,7 +12,7 @@
   </div>
   <div id="app">
     <div>
-      <span><button onclick="nextTheme()">Current theme: {{ player.currentTheme }}</button> <button onclick="toggleSaveType()">Current save type: {{ player.saveType }}</button></span>
+      <span><button onclick="nextTheme()">Current theme: {{ player.currentTheme }}</button> <button onclick="toggleSaveType()">Current save type: {{ player.saveType }}</button> <button @click="toggleLegacyLayers()">Legacy layers: {{ player.legacyLayers ? 'enabled' : 'disabled' }}</button></span>
     </div>
     <div v-if="player.generators.length > 3">
       <button @click="toggleMetaDisplay()">Display buttons display: {{ player.metaDisplay ? 'enabled' : 'disabled' }}</button>
@@ -34,7 +34,7 @@
         <div class="currency">
           <span>You have {{ format(generator.prestigeAmount) }} {{ generator.prestigeName }}<span v-if="idx > 0"> and {{ format(generator.currencyAmount) }} {{ generator.currencyName }}</span>. <button @click="maxAll(idx)">Max all</button> <button @click="toggleAutoMaxAll(idx)" v-if="idx < player.generators.length - 2">Auto max all: {{ generator.autoMaxAll ? 'on' : 'off' }}</button> <button @click="togglePrestigeGain(idx)" v-if="idx < player.generators.length - 3">Prestige gain: {{ generator.prestigeGain ? 'on' : 'off' }}</button></span>
         </div>
-        <button :class="'prestige prestige' + (idx % numPrestiges)" @click="prestige(idx)">Get {{ format(getPrestigeGain(generator.prestigeAmount)) }} {{ generator.nextPrestigeName }}.</button>
+        <button :class="'prestige prestige' + (player.legacyLayers ? '-legacy' : '') + (idx % numPrestiges[player.legacyLayers ? 1 : 0])" @click="prestige(idx)">Get {{ format(getPrestigeGain(generator.prestigeAmount)) }} {{ generator.nextPrestigeName }}.</button>
         <div class="generators-container">
           <div v-for="(gen, jdx) in generator.list">
             <div class="generator" v-if="jdx < player.lowTiers || jdx >= generator.list.length - player.highTiers">
@@ -71,6 +71,8 @@
   <a href="https://dan-simon.github.io/misc/b2/">Original</a>
   <br />
   <a href="https://raw.githack.com/AarexTiaokhiao/ng-plus-3-prestige-buttons/master/">Prestige buttons</a>
+  <br />
+  (<a href="https://raw.githack.com/AarexTiaokhiao/ng-plus-3-prestige-buttons/6bfd4de5b84ddb01f0edc62edea022e6dff72c59/">Legacy</a>)
   <div style="display: none;"><textarea id="exportOutput"></textarea></div>
 </body>
 <script src="js/vue.js"></script>

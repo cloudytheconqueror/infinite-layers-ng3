@@ -81,26 +81,37 @@ function getInitialGenerator (i, j) {
   }
 }
 
-let prestiges = ['Infinity', 'Eternity', 'Quantum', 'Ghostify',
-                 'Ethereal', 'Hadronize', 'Stellar', 'Universal',
-                 'Fractalize', 'Abstraction', 'Cosmological', 'Beyond',
-                 'Meta', '?', 'Virtualize', 'Digitize',
-                 'Infinitize', 'Timeless', 'Continuum', 'Omniscient',
-                 'Spiritual', 'Enlighten'];
-let prestigeCurrencies = ['infinity points', 'eternity points', 'quarks', 'ghost particles',
-                          'ethereal preons', 'antiquarks', 'stellar fragments', 'protoverses',
-                          'bubble archverses', 'fractalverses', 'omniverse foams', 'unreality foams',
-                          'monocosmic objects', '???', 'virtual antimatter', 'reality bits',
-                          'metamatter', 'eternal universes', 'quantum foams', 'omnipotent memories',
-                          'immortal spirits', 'reality shards'];
-let numPrestiges = prestiges.length;
+// For now I'm not including the singularity layer, because there's already something
+// called "singularity power" in Infinite Layers and it boosts all layers
+let prestiges = [
+  ['Infinity', 'Eternity', 'Quantum', 'Ghostify',
+   'Hadronize', 'Stellar', 'Ethereal', 'Universal', 'Fractalize',
+   'Omniversal', 'Abstraction', 'Beyond'],
+  ['Infinity', 'Eternity', 'Quantum', 'Ghostify', 'Ethereal',
+   'Hadronize', 'Stellar', 'Universal', 'Fractalize', 'Abstraction',
+   'Cosmological', 'Beyond', 'Meta', '?', 'Virtualize',
+   'Digitize', 'Infinitize', 'Timeless', 'Continuum', 'Omniscient',
+   'Spiritual', 'Enlighten']
+];
+let prestigeCurrencies = [
+  ['infinity points', 'eternity points', 'quarks', 'ghost particles',
+   'antiquarks', 'stellar fragments', 'ethereal preons', 'protoverses', 'bubble archverses',
+   'omniverse foams', 'fractalverses', 'unreality foams'],
+  ['infinity points', 'eternity points', 'quarks', 'ghost particles', 'ethereal preons',
+   'antiquarks', 'stellar fragments', 'protoverses', 'bubble archverses', 'fractalverses',
+   'omniverse foams', 'unreality foams', 'monocosmic objects', '???', 'virtual antimatter',
+   'reality bits', 'metamatter', 'eternal universes', 'quantum foams', 'omnipotent memories',
+   'immortal spirits', 'reality shards']
+];
+let numPrestiges = [prestiges[0].length, prestiges[1].length];
 
 function getPrestigeCurrencyName (i) {
   if (i === 0) {
     return 'antimatter';
   } else {
-    let r = prestigeCurrencies[(i + numPrestiges - 1) % numPrestiges];
-    let metaLevel = Math.floor((i - 1) / numPrestiges);
+    let legacy = player.legacyLayers ? 1 : 0;
+    let r = prestigeCurrencies[legacy][(i + numPrestiges[legacy] - 1) % numPrestiges[legacy]];
+    let metaLevel = Math.floor((i - 1) / numPrestiges[legacy]);
     if (metaLevel > 0) {
       r = 'Mk' + (metaLevel + 1) + ' ' + r;
     }
@@ -113,8 +124,9 @@ function getProducedCurrencyName (i) {
 }
 
 function getPrestigeName (i, title=false) {
-  let main = prestiges[(i + numPrestiges - 1) % numPrestiges];
-  let metaLevel = Math.floor((i - 1) / numPrestiges);
+  let legacy = player.legacyLayers ? 1 : 0;
+  let main = prestiges[legacy][(i + numPrestiges[legacy] - 1) % numPrestiges[legacy]];
+  let metaLevel = Math.floor((i - 1) / numPrestiges[legacy]);
   let r = main;
   if (!title) {
     r = r.toLowerCase();
@@ -130,5 +142,20 @@ function getDisplayName (i) {
     return 'Normal';
   } else {
     return getPrestigeName(i, title=true);
+  }
+}
+
+function updateNames () {
+  for (let i = 0; i < player.generators.length; i++) {
+    let r = player.generators[i];
+    r.prestigeName = getPrestigeCurrencyName(i);
+    r.nextPrestigeName = getPrestigeCurrencyName(i + 1);
+    r.displayName = getDisplayName(i);
+    if (i !== 0) {
+      r.currencyName = getProducedCurrencyName(i);
+    }
+    for (let j = 0; j < r.list.length; j++) {
+      r.list[j].generatorName = ((i === 0) ? '' : (getPrestigeName(i, title=true))) + ' Dimension ' + (j + 1);
+    }
   }
 }

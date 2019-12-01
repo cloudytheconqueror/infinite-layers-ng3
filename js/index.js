@@ -62,6 +62,10 @@ var app = new Vue({
     },
     toggleMetaDisplay() {
       player.metaDisplay = !player.metaDisplay;
+    },
+    toggleLegacyLayers() {
+      player.legacyLayers = !player.legacyLayers;
+      updateNames();
     }
   }
 })
