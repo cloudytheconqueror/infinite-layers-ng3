@@ -13,6 +13,7 @@ function getNextTheme() {
 function setTheme(name) {
     document.querySelectorAll("link").forEach(function(e) {
         if (e.href.includes("theme")) e.remove();
+        else if (e.href.includes("prestige-buttons")) e.remove();
     });
     player.currentTheme = name;
 
@@ -24,4 +25,14 @@ function setTheme(name) {
     link.href = "css/theme-" + name.split(' ').join('-') + ".css";
 
     head.appendChild(link);
+
+    if (name.includes("ng3 buttons")) {
+      var link2 = document.createElement('link');
+
+      link2.type = 'text/css';
+      link2.rel = 'stylesheet';
+      link2.href = "css/prestige-buttons.css"
+
+      head.appendChild(link2);
+    }
 }
