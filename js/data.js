@@ -82,7 +82,7 @@ function getInitialGenerator (i, j) {
 }
 
 // For now I'm not including the singularity layer, because there's already something
-// called "singularity power" in Infinite Layers and it boosts all layers
+// called "singularity power" in Infinite Layers and it boosts all layers.
 let prestiges = [
   ['Infinity', 'Eternity', 'Quantum', 'Ghostify',
    'Hadronize', 'Stellar', 'Ethereal', 'Universal', 'Fractalize',
@@ -93,10 +93,12 @@ let prestiges = [
    'Digitize', 'Infinitize', 'Timeless', 'Continuum', 'Omniscient',
    'Spiritual', 'Enlighten']
 ];
+// Universal (both normal and legacy) has two prestige currencies so I had to pick one of them.
+// The other is singularity energy in normal, and phantom energy in legacy.
 let prestigeCurrencies = [
   ['infinity points', 'eternity points', 'quarks', 'ghost particles',
-   'antiquarks', 'stellar fragments', 'ethereal preons', 'protoverses', 'bubble archverses',
-   'omniverse foams', 'fractalverses', 'unreality foams'],
+   'antiquarks', 'dwarf stars', 'starlight', 'phantom energy', 'archverses',
+   'infiniteverses', 'transcendentems', 'reality foams'],
   ['infinity points', 'eternity points', 'quarks', 'ghost particles', 'ethereal preons',
    'antiquarks', 'stellar fragments', 'protoverses', 'bubble archverses', 'fractalverses',
    'omniverse foams', 'unreality foams', 'monocosmic objects', '???', 'virtual antimatter',
