@@ -78,22 +78,57 @@
 	}
 }
 
-.prestige4, .prestige-legacy5 {
+.prestige4 {
+	position: relative;
+	background: transparent;
+	box-shadow: inset 0px 0px 24px 0px black;
+  overflow: hidden;
+	border: 2px solid black;
+	color: rgba(255,255,255,0.8);
+	text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+}
+.prestige4:hover {
+	box-shadow: inset 0px 0px 24px 0px white;
+	border-color: #bfbfbf;
+	color: white;
+	text-shadow: 0px 0px 3px white;
+}
+.hadron-bg {
+	position: absolute;
+	background: conic-gradient(#ff0000, #00ff00, #0000ff, #ff0000);
+	background-size: contain;
+	height: 20vmax;
+	width: 20vmax;
+	top: calc(-10vmax + 50%);
+	left: calc(-10vmax + 50%);
+	z-index: -1;
+	animation: hadronize 5s linear infinite;
+}
+@keyframes hadronize {
+	0%{
+	    transform: none;
+	}
+	100%{
+	    transform: rotate(360deg);
+	}
+}
+
+.prestige-legacy5 {
 	color: #ffffff;
-	animation: hadronize 1.5s linear infinite;
+	animation: hadronizeold 1.5s linear infinite;
 	border: 2px solid #1f1f1f;
 	background: radial-gradient(transparent, #000000), repeating-linear-gradient(#990000, #009900, #000099, #990000);
 	background-size: 100% 200%;
 }
-.prestige4:hover, .prestige-legacy5:hover {
+.prestige-legacy5:hover {
 	color: #000000;
-	animation: hadronize 1.5s linear infinite;
+	animation: hadronizeold 1.5s linear infinite;
 	border: 2px solid #bfbfbf;
 	text-shadow: 0px 0px 3px #ffffff, 0px 0px 3px #ffffff;
 	background: radial-gradient(transparent, #000000), repeating-linear-gradient(#990000, #009900, #000099, #990000);
 	background-size: 100% 200%;
 }
-@keyframes hadronize{
+@keyframes hadronizeold{
 	0%{
 	    background-position: 50% 50%, 0% 0%;
 	}
@@ -102,13 +137,28 @@
 	}
 }
 
-.prestige5, .prestige-legacy6 {
+.prestige5 {
+	color: #bf5f00;
+	text-shadow: 0 0 3px transparent, 0 0 6px #ffdf7f;
+	background: radial-gradient(#ffbf00, #ff7f00);
+	background-size: 300% 300%;
+	background-position: 100% 100%;
+	border: 2px solid #ffbf00;
+}
+.prestige5:hover {
+	box-shadow: inset 0px 0px 24px 0px #ff3f00;
+	border-color: #ff3f00;
+	color: #ff3f00;
+	text-shadow: 0 0 3px black, 0 0 6px #7f1f00;
+}
+
+.prestige-legacy6 {
 	color: #7f6f1f;
 	text-shadow: 0 0 1px #000000, 0 0 2px #7f7f7f, 0 0 3px #ffffff;
 	background: radial-gradient(closest-side,#ff5400 0,#ff9021 33%,#ffdf3f 100%);
 	border: 2px solid #ffdf3f;
 }
-.prestige5:hover, .prestige-legacy6:hover {
+.prestige-legacy6:hover {
 	color: #ffffff;
 	text-shadow: 0 0 1px #ffdf3f, 0 0 2px #7f6f1f, 0 0 3px #000000;
 	background: radial-gradient(closest-side,#ff5400 0,#ff9021 33%,#ffdf3f 100%);

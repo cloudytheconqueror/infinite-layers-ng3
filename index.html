@@ -34,7 +34,10 @@
         <div class="currency">
           <span>You have {{ format(generator.prestigeAmount) }} {{ generator.prestigeName }}<span v-if="idx > 0"> and {{ format(generator.currencyAmount) }} {{ generator.currencyName }}</span>. <button @click="maxAll(idx)">Max all</button> <button @click="toggleAutoMaxAll(idx)" v-if="idx < player.generators.length - 2">Auto max all: {{ generator.autoMaxAll ? 'on' : 'off' }}</button> <button @click="togglePrestigeGain(idx)" v-if="idx < player.generators.length - 3">Prestige gain: {{ generator.prestigeGain ? 'on' : 'off' }}</button></span>
         </div>
-        <button :class="'prestige prestige' + (player.legacyLayers ? '-legacy' : '') + (idx % numPrestiges[player.legacyLayers ? 1 : 0])" @click="prestige(idx)">Get {{ format(getPrestigeGain(generator.prestigeAmount)) }} {{ generator.nextPrestigeName }}.</button>
+        <button :class="'prestige prestige' + (player.legacyLayers ? '-legacy' : '') + (idx % numPrestiges[player.legacyLayers ? 1 : 0])" @click="prestige(idx)">
+          Get {{ format(getPrestigeGain(generator.prestigeAmount)) }} {{ generator.nextPrestigeName }}.
+          <div v-if="!player.legacyLayers && idx % numPrestiges[0] == 4" class="hadron-bg"></div>
+        </button>
         <div class="generators-container">
           <div v-for="(gen, jdx) in generator.list">
             <div class="generator" v-if="jdx < player.lowTiers || jdx >= generator.list.length - player.highTiers">
